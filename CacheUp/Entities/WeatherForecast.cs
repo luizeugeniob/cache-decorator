@@ -1,4 +1,4 @@
-namespace CacheUp
+namespace CacheUp.Entities
 {
     public class WeatherForecast
     {

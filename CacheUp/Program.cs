@@ -1,3 +1,4 @@
+using CacheUp.Services;
 
 namespace CacheUp
 {
@@ -13,6 +14,8 @@ namespace CacheUp
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddScoped<IWeatherForecastService, WeatherForecastService>();
 
             var app = builder.Build();
 
