@@ -2,27 +2,26 @@ using CacheUp.Entities;
 using CacheUp.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CacheUp.Controllers
+namespace CacheUp.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class WeatherForecastController : ControllerBase
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    private readonly IWeatherForecastService _weatherForecastService;
+    private readonly ILogger<WeatherForecastController> _logger;
+
+    public WeatherForecastController(
+        IWeatherForecastService weatherForecastService,
+        ILogger<WeatherForecastController> logger)
     {
-        private readonly IWeatherForecastService _weatherForecastService;
-        private readonly ILogger<WeatherForecastController> _logger;
+        _logger = logger;
+        _weatherForecastService = weatherForecastService;
+    }
 
-        public WeatherForecastController(
-            IWeatherForecastService weatherForecastService,
-            ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
-            _weatherForecastService = weatherForecastService;
-        }
-
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            return _weatherForecastService.Get();
-        }
+    [HttpGet(Name = "GetWeatherForecast")]
+    public IEnumerable<WeatherForecast> Get()
+    {
+        return _weatherForecastService.Get();
     }
 }

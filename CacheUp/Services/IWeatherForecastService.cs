@@ -1,9 +1,8 @@
 ﻿using CacheUp.Entities;
 
-namespace CacheUp.Services
+namespace CacheUp.Services;
+
+public interface IWeatherForecastService
 {
-    public interface IWeatherForecastService
-    {
-        IEnumerable<WeatherForecast> Get();
-    }
+    IEnumerable<WeatherForecast> Get();
 }
