@@ -1,0 +1,6 @@
+@CacheUp_HostAddress = http://localhost:5072
+
+GET {{CacheUp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
