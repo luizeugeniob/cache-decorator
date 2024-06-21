@@ -1,3 +1,5 @@
+using CacheUp.Entities;
+using CacheUp.Repositories;
 using CacheUp.Services;
 
 namespace CacheUp;
@@ -15,7 +17,11 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        builder.Services.AddScoped<IWeatherForecastService, WeatherForecastService>();
+        builder.Services.AddScoped<IRepository<Hobby>, HobbyRepository>();
+        builder.Services.AddScoped<IRepository<Traveler>, TravelerRepository>();
+        
+        builder.Services.AddScoped<IHobbyService, HobbyService>();
+        builder.Services.AddScoped<ITravelerService, TravelerService>();
 
         var app = builder.Build();
 
